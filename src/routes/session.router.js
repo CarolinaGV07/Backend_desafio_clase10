@@ -38,7 +38,7 @@ router.get('/logout', (req,res) => {
     req.session.destroy(err => {
         if(err) return res.render("profile",{error:"No se pudo cerrar la sesion"})
 
-        return res.redirect('/login').send('Logout ok!')
+        return res.redirect('/login')
     })
 })
 
