@@ -43,10 +43,11 @@ router.get('/home', async (req, res) => {
 })
 
 router.get('/products', async (req, res) => {
+    const user = req.session.user
     const cart = await cartModel.findOne().lean().exec()
     const products = await ProductModel.find().lean().exec()
     console.log({cart})
-    res.render('products', {products, cart, css: 'products'} )
+    res.render('products', {products, cart, user, css: 'products'} )
 })
 
 router.get('/cart/:cid', async (req, res) => {
